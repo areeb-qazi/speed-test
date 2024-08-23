@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Per Speed Test</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="mode-toggle">
+        <button class="btn btn-custom" id="toggleMode"><i class="fa-solid fa-moon"></i><i
+                class="fa-solid fa-sun"></i></button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Click Per Speed Test</h1>
+            <p>Test your clicking speed with various tests</p>
+        </div>
+        <div class="row mt-5 mb-5" style="border: 3px dashed #17a2b8; border-radius: 15px;">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <h2 class="text-center mt-3">CPS Test Online</h2>
+                <ul class="nav nav-tabs" id="testTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="kohi-tab" data-toggle="tab" href="#kohi" role="tab" aria-controls="kohi" aria-selected="true">Kohi Click Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="jitter-tab" data-toggle="tab" href="#jitter" role="tab" aria-controls="jitter" aria-selected="false">Jitter Click Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="scroll-tab" data-toggle="tab" href="#scroll" role="tab" aria-controls="scroll" aria-selected="false">Scroll Wheel Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="typing-tab" data-toggle="tab" href="#typing" role="tab" aria-controls="typing" aria-selected="false">Typing Speed Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="spacebar-tab" data-toggle="tab" href="#spacebar" role="tab" aria-controls="spacebar" aria-selected="false">Spacebar Clicker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coreball-tab" data-toggle="tab" href="#coreball" role="tab" aria-controls="coreball" aria-selected="false">Coreball Game</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-7 col-md-8 col-sm-6">
+                <div class="tab-content mb-4" id="testTabsContent">
+                    <!-- Kohi Click Test -->
+                    <div class="tab-pane fade show active" id="kohi" role="tabpanel" aria-labelledby="kohi-tab">
+                        <div class="test-section">
+                            <div class="card mt-4 p-4">
+                                <div class="row">
+                                    <div class="col-4 box-small">
+                                        <input type="hidden" id="kohi-timer-value" value="5">
+                                        <button class="btn-value btn btn-info w-100 timer-bg text-center">
+                                            <span class="panel-span" id="kohi-timer">00</span>
+                                            <span><img src="images/time.svg" alt="Timer" width="12" height="13"> Timer</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 Click-bg text-center">
+                                            <span class="panel-span" id="kohi-clicks">00</span>
+                                            <span><img src="images/click.svg" alt="Click" width="12" height="12"> Click/s</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 score-bg text-center">
+                                            <span class="panel-span" id="kohi-score">00</span>
+                                            <span><img src="images/score.svg" alt="Score" width="12" height="14"> Score</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="min-box" id="kohi-minBox">
+                                    <div id="kohi-clickarea" class="btn click-box card material-ripple">
+                                        <button id="kohi-start" type="button" class="btn btn-light btn-round waves-effect waves-light m-1">Click Here to Start Playing</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jitter Click Test -->
+                    <div class="tab-pane fade" id="jitter" role="tabpanel" aria-labelledby="jitter-tab">
+                        <div class="test-section">
+                            <div class="card mt-4 p-4">
+                                <div class="row">
+                                    <div class="col-4 box-small">
+                                        <input type="hidden" id="jitter-timer-value" value="5">
+                                        <button class="btn-value btn btn-info w-100 timer-bg text-center">
+                                            <span class="panel-span" id="jitter-timer">00</span>
+                                            <span><img src="images/time.svg" alt="Timer" width="12" height="13"> Timer</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 Click-bg text-center">
+                                            <span class="panel-span" id="jitter-clicks">00</span>
+                                            <span><img src="images/click.svg" alt="Click" width="12" height="12"> Click/s</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 score-bg text-center">
+                                            <span class="panel-span" id="jitter-score">00</span>
+                                            <span><img src="images/score.svg" alt="Score" width="12" height="14"> Score</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="min-box" id="jitter-minBox">
+                                    <div id="jitter-clickarea" class="btn click-box card material-ripple">
+                                        <button id="jitter-start" type="button" class="btn btn-light btn-round waves-effect waves-light m-1">Click Here to Start Playing</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Scroll Wheel Test -->
+                    <div class="tab-pane fade" id="scroll" role="tabpanel" aria-labelledby="scroll-tab">
+                        <div class="test-section">
+                            <div class="card mt-4 p-4">
+                                <div class="row">
+                                    <div class="col-4 box-small">
+                                        <input type="hidden" id="scroll-timer-value" value="5">
+                                        <button class="btn-value btn btn-info w-100 timer-bg text-center">
+                                            <span class="panel-span" id="scroll-timer">00</span>
+                                            <span><img src="images/time.svg" alt="Timer" width="12" height="13"> Timer</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 Click-bg text-center">
+                                            <span class="panel-span" id="scroll-clicks">00</span>
+                                            <span><img src="images/click.svg" alt="Click" width="12" height="12"> Scroll/s</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 score-bg text-center">
+                                            <span class="panel-span" id="scroll-score">00</span>
+                                            <span><img src="images/score.svg" alt="Score" width="12" height="14"> Score</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="min-box" id="scroll-minBox">
+                                    <div id="scroll-clickarea" class="btn click-box card material-ripple">
+                                        <button id="scroll-start" type="button" class="btn btn-light btn-round waves-effect waves-light m-1">Click Here to Start Playing</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Typing Speed Test -->
+                    <div class="tab-pane fade" id="typing" role="tabpanel" aria-labelledby="typing-tab">
+                        <div class="test-section">
+                            <div class="card mt-4 p-4">
+                                <div class="row">
+                                    <div class="col-4 box-small">
+                                        <input type="hidden" id="typing-timer-value" value="60">
+                                        <button class="btn-value btn btn-info w-100 timer-bg text-center">
+                                            <span class="panel-span" id="typing-timer">00:00</span>
+                                            <span><img src="images/time.svg" alt="Timer" width="12" height="13"> Timer</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 Click-bg text-center">
+                                            <span class="panel-span" id="typing-wpm">00</span>
+                                            <span>WPM</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 score-bg text-center">
+                                            <span class="panel-span" id="typing-accuracy">00%</span>
+                                            <span>Accuracy</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="min-box" id="typing-minBox">
+                                    <textarea id="typing-text" class="form-control mt-4" rows="5" placeholder="Start typing here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Spacebar Clicker -->
+                    <div class="tab-pane fade" id="spacebar" role="tabpanel" aria-labelledby="spacebar-tab">
+                        <div class="test-section">
+                            <div class="card mt-4 p-4">
+                                <div class="row">
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 timer-bg text-center">
+                                            <span class="panel-span" id="spacebar-time">00:00</span>
+                                            <span><img src="images/time.svg" alt="Timer" width="12" height="13"> Time</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 Click-bg text-center">
+                                            <span class="panel-span" id="spacebar-count">00</span>
+                                            <span>Clicks</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-4 box-small">
+                                        <button class="btn-value btn btn-info w-100 score-bg text-center">
+                                            <span class="panel-span" id="spacebar-speed">00</span>
+                                            <span>Clicks/s</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="min-box" id="spacebar-minBox">
+                                    <div id="spacebar-clickarea" class="btn click-box card material-ripple">
+                                        <button id="spacebar-start" type="button" class="btn btn-light btn-round waves-effect waves-light m-1">Click Here to Start Playing</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Coreball Game -->
+                    <div class="tab-pane fade" id="coreball" role="tabpanel" aria-labelledby="coreball-tab">
+                        <div class="test-section">
+                            <div class="card mt-4 p-4">
+                                <div class="row">
+                                    <div class="col-12 box-small">
+                                        <h3 class="text-center">Coreball Game</h3>
+                                        <div class="game-container">
+                                            <div class="coreball">
+                                                <div class="ball" id="ball"></div>
+                                                <div class="spike" style="transform: rotate(0deg);"></div>
+                                                <div class="spike" style="transform: rotate(45deg);"></div>
+                                                <div class="spike" style="transform: rotate(90deg);"></div>
+                                                <div class="spike" style="transform: rotate(135deg);"></div>
+                                                <div class="spike" style="transform: rotate(180deg);"></div>
+                                                <div class="spike" style="transform: rotate(225deg);"></div>
+                                                <div class="spike" style="transform: rotate(270deg);"></div>
+                                                <div class="spike" style="transform: rotate(315deg);"></div>
+                                            </div>
+                                        </div>
+                                        <button  id="shootButton">Shoot</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2  d-md-block">
+                <!-- Kohi Click Test Timer Selection -->
+                <div class="form-group">
+                    <h3 class="text-center mt-5">Select Timer</h3>
+                    <select class="form-control" id="global-timer-select">
+                        <option class="option" value="1">1 second</option>
+                        <option class="option" value="5" selected>5 seconds</option>
+                        <option class="option" value="10">10 seconds</option>
+                        <option class="option" value="60">60 seconds</option>
+                        <option class="option" value="100">100 seconds</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+        <section id="single-post">
+        <div class="container">
+            <h2>What is a CPS Test?</h2>
+            <p>A CPS Test, short for Clicks Per Second Test, is an online tool used to measure how quickly you can click
+                within a specified time frame. It's often used as a fun way to test your dexterity and agility with a
+                mouse
+                or touchscreen. CPS tests are popular among gamers, competitive clickers, and anyone interested in
+                testing
+                their clicking speed.</p>
+
+            <h2>How Does a CPS Test Work?</h2>
+            <ol>
+                <li><strong>Time Frame:</strong> Typically, a CPS test measures the number of clicks you can make in one
+                    second.</li>
+                <li><strong>Clicking Area:</strong> You are provided with a designated area on the screen where you need
+                    to
+                    click repeatedly.</li>
+                <li><strong>Measurement:</strong> The test counts the number of clicks you achieve within the specified
+                    time
+                    (usually one second) and displays your CPS score.</li>
+            </ol>
+
+            <h2>Why Take a CPS Test?</h2>
+            <ul>
+                <li><strong>Competitive Gaming:</strong> In competitive gaming, especially in games that require fast
+                    reflexes or clicking speed, CPS can be a crucial metric.</li>
+                <li><strong>Skill Improvement:</strong> Regularly taking CPS tests can help you track your improvement
+                    in
+                    clicking speed over time.</li>
+                <li><strong>Fun Challenge:</strong> Many people enjoy CPS tests as a casual challenge or as a way to
+                    compete
+                    with friends.</li>
+            </ul>
+
+            <h2>Tips for Improving CPS:</h2>
+            <ul>
+                <li><strong>Practice Regularly:</strong> Like any skill, clicking speed can improve with practice.</li>
+                <li><strong>Optimize Hardware:</strong> Ensure your mouse or touchscreen is responsive and comfortable
+                    for
+                    clicking.</li>
+                <li><strong>Maintain Relaxation:</strong> Tension or stress can affect clicking speed, so stay relaxed
+                    while
+                    testing.</li>
+            </ul>
+
+            <h2>Popular CPS Test Tools:</h2>
+            <ul>
+                <li><strong>Online CPS Test Websites:</strong> Numerous websites offer CPS tests for free, allowing you
+                    to
+                    compete or practice.</li>
+                <li><strong>Mobile Apps:</strong> There are also CPS test apps available for smartphones and tablets.
+                </li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>A CPS Test is a simple yet engaging way to measure your clicking speed and agility. Whether you're a
+                gamer
+                looking to enhance your skills or just curious about your clicking abilities, CPS tests provide a fun
+                and
+                measurable way to track your performance.</p>
+
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>
+                        <a data-toggle="collapse" href="#faq1" role="button" aria-expanded="false" aria-controls="faq1">
+                            What is a good CPS score?
+                            <i class="fa fa-chevron-down ml-2"></i>
+                        </a>
+                    </h3>
+                    <div class="collapse" id="faq1">
+                        <p>A good CPS score can vary depending on the context. Generally, a score of 6-7 clicks per
+                            second is considered average, while scores above 10 clicks per second are considered fast.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>
+                        <a data-toggle="collapse" href="#faq2" role="button" aria-expanded="false" aria-controls="faq2">
+                            How can I improve my CPS score?
+                            <i class="fa fa-chevron-down ml-2"></i>
+                        </a>
+                    </h3>
+                    <div class="collapse" id="faq2">
+                        <p>Practice regularly, use a responsive mouse or touchscreen, and try to stay relaxed while
+                            clicking. These tips can help improve your CPS score over time.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>
+                        <a data-toggle="collapse" href="#faq3" role="button" aria-expanded="false" aria-controls="faq3">
+                            Are CPS tests accurate?
+                            <i class="fa fa-chevron-down ml-2"></i>
+                        </a>
+                    </h3>
+                    <div class="collapse" id="faq3">
+                        <p>Most CPS tests are designed to be accurate, but factors like the responsiveness of your
+                            hardware and software can affect the results. It's best to use multiple tools and average
+                            your scores for the most accurate measurement.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3>
+                        <a data-toggle="collapse" href="#faq4" role="button" aria-expanded="false" aria-controls="faq4">
+                            Can CPS tests be used for mobile devices?
+                            <i class="fa fa-chevron-down ml-2"></i>
+                        </a>
+                    </h3>
+                    <div class="collapse" id="faq4">
+                        <p>Yes, many CPS test tools are available for mobile devices and can be accessed through web
+                            browsers or dedicated apps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer mt-5 p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>About Us</h5>
+                    <p>We provide a variety of click speed tests to help you measure and improve your clicking
+                        abilities.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <p>Email: support@clickspeedtest.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="btn btn-social-icon btn-facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="btn btn-social-icon btn-twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="btn btn-social-icon btn-instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="col=md-3">
+                    <h5>Our tool</h5>
+                    <li><a href="#kohi">kohi</a></li>
+                    <li><a href="#jitter">jitter</a></li>
+                    <li><a href="#scroll">scroll</a></li>
+                    <li><a href="#typing">typing</a></li>
+                    <li><a href="#spacebar">spacebar</a></li>
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <p class="text-muted">&copy; 2024 Click Speed Test. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Kohi Click Test
+            let kohiClickCount = 0;
+            let kohiStartTime;
+            let kohiTimerValue = 5; // seconds
+
+            document.getElementById('kohi-start').addEventListener('click', function () {
+                kohiClickCount = 0;
+                kohiStartTime = new Date().getTime();
+                document.getElementById('kohi-clicks').textContent = '00';
+                document.getElementById('kohi-score').textContent = '00';
+                startTimer('kohi-timer', kohiTimerValue, 'kohi-clicks', 'kohi-score');
+            });
+
+            document.getElementById('kohi-clickarea').addEventListener('click', function () {
+                if (kohiStartTime) {
+                    kohiClickCount++;
+                    document.getElementById('kohi-clicks').textContent = kohiClickCount;
+                    document.getElementById('kohi-score').textContent = kohiClickCount;
+                }
+            });
+
+            // Jitter Click Test
+            let jitterClickCount = 0;
+            let jitterStartTime;
+            let jitterTimerValue = 5; // seconds
+
+            document.getElementById('jitter-start').addEventListener('click', function () {
+                jitterClickCount = 0;
+                jitterStartTime = new Date().getTime();
+                document.getElementById('jitter-clicks').textContent = '00';
+                document.getElementById('jitter-score').textContent = '00';
+                startTimer('jitter-timer', jitterTimerValue, 'jitter-clicks', 'jitter-score');
+            });
+
+            document.getElementById('jitter-clickarea').addEventListener('click', function () {
+                if (jitterStartTime) {
+                    jitterClickCount++;
+                    document.getElementById('jitter-clicks').textContent = jitterClickCount;
+                    document.getElementById('jitter-score').textContent = jitterClickCount;
+                }
+            });
+
+            // Scroll Wheel Test
+            let scrollCount = 0;
+            let scrollStartTime;
+            let scrollTimerValue = 5; // seconds
+
+            document.getElementById('scroll-start').addEventListener('click', function () {
+                scrollCount = 0;
+                scrollStartTime = new Date().getTime();
+                document.getElementById('scroll-clicks').textContent = '00';
+                document.getElementById('scroll-score').textContent = '00';
+                startTimer('scroll-timer', scrollTimerValue, 'scroll-clicks', 'scroll-score');
+            });
+
+            document.getElementById('scroll-clickarea').addEventListener('wheel', function (event) {
+                if (scrollStartTime) {
+                    event.preventDefault();
+                    scrollCount++;
+                    document.getElementById('scroll-clicks').textContent = scrollCount;
+                    document.getElementById('scroll-score').textContent = scrollCount;
+                }
+            });
+
+            // Typing Speed Test
+            let typingStartTime;
+            let typingTimerInterval;
+            let typingTimerValue = 60; // seconds
+
+            document.getElementById('typing-text').addEventListener('input', function () {
+                if (!typingStartTime) {
+                    typingStartTime = new Date().getTime();
+                    startTypingTimer('typing-timer', typingTimerValue, 'typing-wpm', 'typing-accuracy');
+                }
+            });
+
+            function startTypingTimer(timerId, duration, wpmId, accuracyId) {
+                let startTime = new Date().getTime();
+                typingTimerInterval = setInterval(function () {
+                    let currentTime = Math.floor((new Date().getTime() - startTime) / 1000);
+                    let remainingTime = duration - currentTime;
+                    if (remainingTime <= 0) {
+                        clearInterval(typingTimerInterval);
+                        remainingTime = 0;
+                    }
+                    let minutes = Math.floor(remainingTime / 60);
+                    let seconds = remainingTime % 60;
+                    document.getElementById(timerId).textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    updateTypingStats(wpmId, accuracyId);
+                }, 1000);
+            }
+
+            function updateTypingStats(wpmId, accuracyId) {
+                let typedText = document.getElementById('typing-text').value;
+                let words = typedText.trim().split(/\s+/).length;
+                let characters = typedText.length;
+                let minutes = typingTimerValue / 60;
+                let wpm = Math.round(words / minutes);
+                let accuracy = calculateAccuracy(typedText);
+                document.getElementById(wpmId).textContent = wpm;
+                document.getElementById(accuracyId).textContent = `${accuracy}%`;
+            }
+
+            function calculateAccuracy(typedText) {
+                let originalText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+                let correctCharacters = 0;
+                for (let i = 0; i < typedText.length; i++) {
+                    if (typedText[i] === originalText[i]) {
+                        correctCharacters++;
+                    }
+                }
+                return ((correctCharacters / originalText.length) * 100).toFixed(2);
+            }
+
+            // Spacebar Clicker
+            let spacebarCount = 0;
+            let spacebarStartTime;
+
+            document.getElementById('spacebar-start').addEventListener('click', function () {
+                spacebarCount = 0;
+                spacebarStartTime = new Date().getTime();
+                document.getElementById('spacebar-count').textContent = '00';
+                document.getElementById('spacebar-speed').textContent = '00';
+                startSpacebarTimer('spacebar-time', 'spacebar-count', 'spacebar-speed');
+            });
+
+            document.getElementById('spacebar-clickarea').addEventListener('keydown', function (event) {
+                if (event.keyCode === 32 && spacebarStartTime) {
+                    event.preventDefault();
+                    spacebarCount++;
+                    document.getElementById('spacebar-count').textContent = spacebarCount;
+                    document.getElementById('spacebar-speed').textContent = calculateSpacebarSpeed(spacebarCount).toFixed(2);
+                }
+            });
+
+            function startSpacebarTimer(timerId, countId, speedId) {
+                let startTime = new Date().getTime();
+                setInterval(function () {
+                    let currentTime = Math.floor((new Date().getTime() - startTime) / 1000);
+                    let minutes = Math.floor(currentTime / 60);
+                    let seconds = currentTime % 60;
+                    document.getElementById(timerId).textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }, 1000);
+            }
+
+            function calculateSpacebarSpeed(count) {
+                let currentTime = new Date().getTime();
+                let elapsedSeconds = (currentTime - spacebarStartTime) / 1000;
+                return count / elapsedSeconds;
+            }
+
+            function startTimer(timerId, duration, countId, scoreId) {
+                let startTime = new Date().getTime();
+                let interval = setInterval(function () {
+                    let currentTime = Math.floor((new Date().getTime() - startTime) / 1000);
+                    let remainingTime = duration - currentTime;
+                    if (remainingTime <= 0) {
+                        clearInterval(interval);
+                        remainingTime = 0;
+                    }
+                    document.getElementById(timerId).textContent = remainingTime < 10 ? `0${remainingTime}` : remainingTime;
+                    if (remainingTime === 0) {
+                        let clicksPerSecond = countId === 'kohi-clicks' ? kohiClickCount : (countId === 'jitter-clicks' ? jitterClickCount : scrollCount);
+                        document.getElementById(scoreId).textContent = clicksPerSecond;
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('toggleMode').addEventListener('click', function () {
+            const currentTheme = document.body.getAttribute('data-theme');
+            document.body.setAttribute('data-theme', currentTheme === 'dark' ? '' : 'dark');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let globalTimerValue = 5; // default to 5 seconds
+
+            document.getElementById('global-timer-select').addEventListener('change', function () {
+                globalTimerValue = parseInt(this.value);
+            });
+
+            // Kohi Click Test
+            let kohiClickCount = 0;
+            let kohiStartTime;
+
+            document.getElementById('kohi-start').addEventListener('click', function () {
+                kohiClickCount = 0;
+                kohiStartTime = new Date().getTime();
+                document.getElementById('kohi-clicks').textContent = '00';
+                document.getElementById('kohi-score').textContent = '00';
+                startTimer('kohi-timer', globalTimerValue, 'kohi-clicks', 'kohi-score');
+            });
+
+            document.getElementById('kohi-clickarea').addEventListener('click', function () {
+                if (kohiStartTime) {
+                    kohiClickCount++;
+                    document.getElementById('kohi-clicks').textContent = kohiClickCount;
+                    document.getElementById('kohi-score').textContent = kohiClickCount;
+                }
+            });
+
+            // Jitter Click Test
+            let jitterClickCount = 0;
+            let jitterStartTime;
+
+            document.getElementById('jitter-start').addEventListener('click', function () {
+                jitterClickCount = 0;
+                jitterStartTime = new Date().getTime();
+                document.getElementById('jitter-clicks').textContent = '00';
+                document.getElementById('jitter-score').textContent = '00';
+                startTimer('jitter-timer', globalTimerValue, 'jitter-clicks', 'jitter-score');
+            });
+
+            document.getElementById('jitter-clickarea').addEventListener('click', function () {
+                if (jitterStartTime) {
+                    jitterClickCount++;
+                    document.getElementById('jitter-clicks').textContent = jitterClickCount;
+                    document.getElementById('jitter-score').textContent = jitterClickCount;
+                }
+            });
+
+            // Scroll Wheel Test
+            let scrollCount = 0;
+            let scrollStartTime;
+
+            document.getElementById('scroll-start').addEventListener('click', function () {
+                scrollCount = 0;
+                scrollStartTime = new Date().getTime();
+                document.getElementById('scroll-clicks').textContent = '00';
+                document.getElementById('scroll-score').textContent = '00';
+                startTimer('scroll-timer', globalTimerValue, 'scroll-clicks', 'scroll-score');
+            });
+
+            document.getElementById('scroll-clickarea').addEventListener('wheel', function (event) {
+                if (scrollStartTime) {
+                    event.preventDefault();
+                    scrollCount++;
+                    document.getElementById('scroll-clicks').textContent = scrollCount;
+                    document.getElementById('scroll-score').textContent = scrollCount;
+                }
+            });
+
+            // Typing Speed Test
+            let typingStartTime;
+            let typingTimerInterval;
+
+            document.getElementById('typing-text').addEventListener('input', function () {
+                if (!typingStartTime) {
+                    typingStartTime = new Date().getTime();
+                    startTypingTimer('typing-timer', globalTimerValue, 'typing-wpm', 'typing-accuracy');
+                }
+            });
+
+            function startTypingTimer(timerId, duration, wpmId, accuracyId) {
+                let startTime = new Date().getTime();
+                typingTimerInterval = setInterval(function () {
+                    let currentTime = Math.floor((new Date().getTime() - startTime) / 1000);
+                    let remainingTime = duration - currentTime;
+                    if (remainingTime <= 0) {
+                        clearInterval(typingTimerInterval);
+                        remainingTime = 0;
+                    }
+                    let minutes = Math.floor(remainingTime / 60);
+                    let seconds = remainingTime % 60;
+                    document.getElementById(timerId).textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    updateTypingStats(wpmId, accuracyId);
+                }, 1000);
+            }
+
+            function updateTypingStats(wpmId, accuracyId) {
+                let typedText = document.getElementById('typing-text').value;
+                let words = typedText.trim().split(/\s+/).length;
+                let characters = typedText.length;
+                let minutes = globalTimerValue / 60;
+                let wpm = Math.round(words / minutes);
+                let accuracy = calculateAccuracy(typedText);
+                document.getElementById(wpmId).textContent = wpm;
+                document.getElementById(accuracyId).textContent = `${accuracy}%`;
+            }
+
+            function calculateAccuracy(typedText) {
+                let originalText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+                let correctCharacters = 0;
+                for (let i = 0; i < typedText.length; i++) {
+                    if (typedText[i] === originalText[i]) {
+                        correctCharacters++;
+                    }
+                }
+                return ((correctCharacters / originalText.length) * 100).toFixed(2);
+            }
+
+            // Spacebar Clicker
+            let spacebarCount = 0;
+            let spacebarStartTime;
+
+            document.getElementById('spacebar-start').addEventListener('click', function () {
+                spacebarCount = 0;
+                spacebarStartTime = new Date().getTime();
+                document.getElementById('spacebar-clicks').textContent = '00';
+                document.getElementById('spacebar-score').textContent = '00';
+                startTimer('spacebar-timer', globalTimerValue, 'spacebar-clicks', 'spacebar-score');
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.code === 'Space' && spacebarStartTime) {
+                    spacebarCount++;
+                    document.getElementById('spacebar-clicks').textContent = spacebarCount;
+                    document.getElementById('spacebar-score').textContent = spacebarCount;
+                }
+            });
+
+            function startTimer(timerId, duration, clicksId, scoreId) {
+                let startTime = new Date().getTime();
+                let timerInterval = setInterval(function () {
+                    let currentTime = Math.floor((new Date().getTime() - startTime) / 1000);
+                    let remainingTime = duration - currentTime;
+                    if (remainingTime <= 0) {
+                        clearInterval(timerInterval);
+                        remainingTime = 0;
+                    }
+                    let minutes = Math.floor(remainingTime / 60);
+                    let seconds = remainingTime % 60;
+                    document.getElementById(timerId).textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }, 1000);
+            }
+        });
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const coreBall = document.getElementById('core-ball');
+    const startButton = document.getElementById('start-button');
+    let angle = 0;
+    let interval;
+
+    const rotateBall = () => {
+        angle += 2; // Increase the angle
+        const radius = 150; // Radius of the circle path
+        const x = radius * Math.cos(angle * Math.PI / 180) + 170; // Center the ball horizontally
+        const y = radius * Math.sin(angle * Math.PI / 180) + 170; // Center the ball vertically
+
+        coreBall.style.left = `${x}px`;
+        coreBall.style.top = `${y}px`;
+    };
+
+    startButton.addEventListener('click', () => {
+        if (interval) {
+            clearInterval(interval); // Clear the existing interval if any
+        }
+        interval = setInterval(rotateBall, 20); // Rotate the ball every 20ms
+    });
+});
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const ball = document.getElementById('ball');
+    const shootButton = document.getElementById('shootButton');
+    const coreball = document.querySelector('.coreball');
+    let rotating = false;
+
+    shootButton.addEventListener('click', function() {
+        if (!rotating) {
+            ball.style.display = 'block';
+            ball.style.bottom = '0';
+            shootBall();
+        }
+    });
+
+    function shootBall() {
+        let position = 0;
+        const interval = setInterval(function() {
+            if (position >= 90) {
+                clearInterval(interval);
+                ball.style.display = 'none';
+                checkCollision();
+            } else {
+                position += 2;
+                ball.style.bottom = position + 'px';
+            }
+        }, 20);
+    }
+
+    function checkCollision() {
+        const spikes = document.querySelectorAll('.spike');
+        const ballRect = ball.getBoundingClientRect();
+        for (let i = 0; i < spikes.length; i++) {
+            const spikeRect = spikes[i].getBoundingClientRect();
+            if (
+                ballRect.left < spikeRect.right &&
+                ballRect.right > spikeRect.left &&
+                ballRect.top < spikeRect.bottom &&
+                ballRect.bottom > spikeRect.top
+            ) {
+                alert('Game Over!');
+                return;
+            }
+        }
+        alert('You scored!');
+    }
+});
+    </script>
+</body>
+
+</html>
